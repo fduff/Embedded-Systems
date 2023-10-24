@@ -31,7 +31,7 @@ public:
         this->imag = i;
     }
     
-    //Copy constructors
+   // Copy constructors
     ComplexNumber(const ComplexNumber& c) {
         this->imag = c.imag;
         this->real = c.real;
@@ -56,6 +56,15 @@ public:
         this->imag *= -1.0;
     }
     
+    void negate() {
+        this->imag *= -1.0;
+        this->real *= -1.0;
+    }
+
+    ComplexNumber negated() {
+        return ComplexNumber(this->real*= -1.0, this->imag *= -1.0);
+    }
+
     //Conjugated - adjective, so return new copy
     ComplexNumber conjugated() {
         return ComplexNumber(this->real, -1.0*this->imag);
@@ -72,6 +81,26 @@ public:
         return ComplexNumber(this->real+c.real, this->imag+c.imag);
     }
     
+    void subtract(const ComplexNumber& c) {
+        this->real -= c.real;
+        this->imag -= c.imag;
+    }
+
+    ComplexNumber subtractedfrom(const ComplexNumber& c) {
+        return ComplexNumber(this->real-c.real, this->imag-c.imag);
+    }
+
+    void multiply(const ComplexNumber& c) {
+        this->real *= c.real;
+        this->imag *= c.imag;
+    }
+
+    ComplexNumber multiplywith(const ComplexNumber& c) {
+        return ComplexNumber(this->real*c.real, this->imag*c.imag);
+    }
+
+
+
     //Display
     void display() {
         cout << this->real << " + " << this->imag << "j" << endl;
