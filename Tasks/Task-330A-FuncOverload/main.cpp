@@ -32,6 +32,8 @@ public:
     void setValue(double u) {
         _real = u;
     }
+
+
     void setValue(int u) {
         _real = (double)u;
     }
@@ -57,6 +59,7 @@ int main()
     DoubleNumber n2;
 
     //setValue function overloading  
+  
     n1.setValue(10);
     n2.setValue("-3.0");
 

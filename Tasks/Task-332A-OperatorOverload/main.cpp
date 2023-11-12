@@ -1,9 +1,12 @@
 #include "mbed.h"
 #include <cmath>
 #include <iostream>
+#include <iterator>
 #include <math.h>
 #include <string.h>
 #include <string>
+#include <system_error>
+#include <utility>
 
 using namespace std;
 
@@ -27,7 +30,8 @@ public:
     DoubleNumber(const DoubleNumber& u) {
         this->setValue(getValue());
     }
-
+    
+   
     //Magnitude
     double magnitude() {
         return fabs(_real);
@@ -82,8 +86,12 @@ public:
         this->setValue(s);
         return *this;
     }
-    bool operator==(DoubleNumber& u)
-    {
+    bool operator==(DoubleNumber& u){    
+        this-> setValue(u.getValue());
+
+          if(*this == u){
+           return true;
+           }
         // Return a true if u is equal to `this`
         // ** TO BE DONE BY THE STUDENT **
         return false;
@@ -109,6 +117,7 @@ int main()
     n1 += 1.0;      // Equivalent to n1.operator+=(1.0);
     n2 = "-3.0";
     n3 = n2;
+   
 
     DoubleNumber sum = (n0 + n1 + n2 + n3);
     cout << sum << endl;
